@@ -83,16 +83,16 @@ namespace Tasks
 
         }
 
+ 
         private List<Cell> NightMoves(Cell cell)
         {
             List<Cell> result = new List<Cell>();
 
-            int[] row = { 2, 2, 1, 1, -1, -1, -2, -2 };
-            int[] col = { 1, -1, 2, -2, -2, 2, -1, 1 };
-            for (int i = 0; i < 8; i++)
+
+            foreach (Pair p in knightMoves.Moves)
             {
-                int nRow = cell.row + row[i];
-                int nCol = (int)cell.column + col[i];
+                int nRow = cell.row + p.x;
+                int nCol = (int)cell.column + p.y;
                 if (IsValidCell(nRow, nCol))
                     result.Add(new Cell(nRow, nCol, cell.Piece));
             }
